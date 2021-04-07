@@ -7,6 +7,7 @@ set -m
 source /envconfig.sh
 
 # start clam service itself and the updater in background as daemon
+freshclam
 freshclam -d &
 clamd &
 
