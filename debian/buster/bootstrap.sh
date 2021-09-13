@@ -7,7 +7,12 @@ set -m
 source /envconfig.sh
 
 # start clam service itself and the updater in background as daemon
-freshclam -d &
+if [ "${FRESHCLAM_DISABLED:-false}" != true ]
+then
+    freshclam
+    freshclam -d &
+fi
+
 clamd &
 
 # recognize PIDs
